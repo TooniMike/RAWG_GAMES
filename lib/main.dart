@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:games_call/repository/utils/app_bloc_observer.dart';
 
 import 'home_page.dart';
 
-void main() {
+// void main() {
+//   runApp(const MyApp());
+// }
+
+Future main() async {
+  await dotenv.load(fileName: ".env");
+  Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

@@ -4,7 +4,7 @@ import 'package:games_call/repository/services/services.dart';
 class GameRepository{
   final GameServices service;
 
-  GameRepository(this.service);
+  GameRepository({required this.service});
 
   Future<List<Genre>> getGenres() async => service.getGenres();   
 }
