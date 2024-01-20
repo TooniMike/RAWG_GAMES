@@ -17,7 +17,7 @@ extension CategoryStateX on CategoryStatus {
 }
 
 
-sealed class CategoryState extends Equatable {
+class CategoryState extends Equatable {
   final int idSelected;
   final List<Genre> categories;
   final CategoryStatus status;
@@ -26,10 +26,26 @@ sealed class CategoryState extends Equatable {
     this.status = CategoryStatus.initial,
     List<Genre>? categories,
     this.idSelected = 0,
-}) : categories = categories ?? const [];
+}) : categories = categories ?? const []
+// idSelected = idSelected
+;
   
   @override
   List<Object> get props => [status, categories, idSelected];
+
+  CategoryState copyWith({
+  List<Genre>? categories,
+  CategoryStatus? status,
+  int? idSelected,
+}){
+  return CategoryState(
+    categories: categories ?? this.categories,
+    status: status ?? this.status,
+    idSelected: idSelected ?? this.idSelected,
+  );
+}
 }
 
-final class CategoryInitial extends CategoryState {}
+// final class CategoryInitial extends CategoryState {}
+
+
