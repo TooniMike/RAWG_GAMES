@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:games_call/repository/game_repository.dart';
 import 'package:games_call/repository/models/genre.dart';
 
@@ -27,7 +26,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           categories: genres,
         ),
       );
-    } catch (erroe, stacktrace) {
+    } catch (error, stacktrace) {
       print(stacktrace);
       emit(state.copyWith(status: CategoryStatus.error));
     }
