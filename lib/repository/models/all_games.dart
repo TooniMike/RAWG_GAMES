@@ -1,3 +1,4 @@
+import 'package:games_call/repository/models/filters.dart';
 import 'package:games_call/repository/models/results.dart';
 
 class AllGames {
@@ -5,6 +6,16 @@ class AllGames {
   String? next;
   dynamic previous;
   List<Results>? results;
+  String? seoTitle;
+  String? seoDescription;
+  String? seoKeywords;
+  String? seoH1;
+  bool? noIndex;
+  bool? noFollow;
+  String? description;
+  Filters? filters;
+  List<String>? nofollowCollections;
+
 
   AllGames({
     this.count,

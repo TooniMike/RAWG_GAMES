@@ -6,3 +6,5 @@ sealed class AllGamesEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetAllGamesEvent extends AllGamesEvent{}

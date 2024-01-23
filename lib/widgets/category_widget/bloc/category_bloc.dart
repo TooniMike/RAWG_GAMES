@@ -10,7 +10,6 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   final GameRepository gameRepository;
   CategoryBloc({required this.gameRepository}) : super(const CategoryState()) {
     // on<CategoryEvent>((event, emit) {
-
     // });
 
     on<GetCategories> (_mapGetCategoriesEventToState);

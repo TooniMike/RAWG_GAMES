@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:games_call/repository/models/all_games.dart';
 import 'package:games_call/repository/models/genre.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
@@ -37,8 +38,23 @@ class GameServices {
       } else {
         throw ErrorEmptyResponse();
       }
-    } else{
+    } else {
       throw ErrorGettingGames('Error getting genres');
+    }
+  }
+
+  Future<AllGames> getAllGames() async {
+    final response = await _httpClient.get(getUrl(url: 'games'));
+    if (response.statusCode == 200) {
+      if (response.body.isNotEmpty) {
+        return AllGames.fromJson(
+          json.decode(response.body),
+        );
+      } else {
+        throw ErrorEmptyResponse();
+      }
+    } else {
+      throw ErrorGettingGames('Error getting games');
     }
   }
 }
