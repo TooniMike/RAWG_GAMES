@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:games_call/repository/models/all_games.dart';
 import 'package:games_call/repository/models/genre.dart';
+import 'package:games_call/repository/models/results.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,10 +20,14 @@ class GameServices {
 
   Uri getUrl({
     required String url,
+    Map<String, String>? extraParameters,
   }) {
     final queryParameters = <String, String>{
       'key': dotenv.get('GAMES_API_KEY')
     };
+    if (extraParameters != null) {
+      queryParameters.addAll(extraParameters);
+    }
     return Uri.parse('$baseUrl/$url').replace(queryParameters: queryParameters);
   }
 
@@ -56,5 +61,26 @@ class GameServices {
     } else {
       throw ErrorGettingGames('Error getting games');
     }
+  }
+
+  Future<List<Results>> getGamesByCategory(int genreId) async {
+    final response = await _httpClient.get(
+      getUrl(
+        url: 'games',
+        extraParameters: {
+          'genres': genreId.toString(),
+        },
+      ),
+    );
+    if (response.statusCode == 200) {
+      if (response.body.isNotEmpty) {
+        return List<Results>.from(json
+            .decode(response.body)['results']
+            .map((data) => Results.fromJson(data)));
+      } else {
+        throw ErrorEmptyResponse();
+      }
+    }
+    throw ErrorGettingGames('Error getting games');
   }
 }
