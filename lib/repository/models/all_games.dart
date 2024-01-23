@@ -16,25 +16,60 @@ class AllGames {
   Filters? filters;
   List<String>? nofollowCollections;
 
-
   AllGames({
     this.count,
     this.next,
     this.previous,
-    required this.results,
+    this.results,
+    this.seoTitle,
+    this.seoDescription,
+    this.seoKeywords,
+    this.seoH1,
+    this.noIndex,
+    this.noFollow,
+    this.description,
+    this.filters,
+    this.nofollowCollections,
   });
 
   static AllGames empty = AllGames(
-    count: 0,
-    next: '',
-    previous: 0,
-    results: [],
-  );
+      count: 0,
+      next: '',
+      previous: 0,
+      results: [],
+      seoTitle: '',
+      seoDescription: '',
+      seoKeywords: '',
+      seoH1: '',
+      noIndex: false,
+      noFollow: false,
+      description: '',
+      filters: Filters(),
+      nofollowCollections: []);
 
   AllGames.fromJson(Map<String, dynamic> json) {
     count = json['count'];
     next = json['next'];
     previous = json['previous'];
-    results = json['results'];
+    results = <Results>[];
+    json['results'].forEach((v) {
+      results!.add(Results.fromJson(v));
+    });
+
+    seoTitle = json['seo_title'];
+    seoDescription = json['seo_description'];
+    seoKeywords = json['seo_keywords'];
+    seoH1 = json['seo_h1'];
+    noIndex = json['noindex'];
+    noFollow = json['nofollow'];
+    description = json['description'];
+    filters =
+        json['filters'] != null ? Filters.fromJson(json['filters']) : null;
+        
+    nofollowCollections = json['nofollow_collections'].cast<String>();
+
+    // (json['results'] as List).forEach((e) {
+    //   results!.add(Results.fromJson(e));
+    // });
   }
 }

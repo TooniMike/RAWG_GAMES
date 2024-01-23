@@ -1,5 +1,4 @@
 import 'package:games_call/repository/models/added_by_status.dart';
-import 'package:games_call/repository/models/esrb_rating.dart';
 import 'package:games_call/repository/models/genre.dart';
 import 'package:games_call/repository/models/parent_platforms.dart';
 import 'package:games_call/repository/models/platforms.dart';
@@ -32,18 +31,13 @@ class Results {
   String? dominantColor;
   List<Platforms>? platforms;
   List<ParentPlatforms>? parentPlatforms;
-  List<Genre>? genre;
+  List<Genre>? genres;
   List<Stores>? stores;
   String? clip;
   List<Tags>? tags;
-  EsrbRating? esrbRating;
+  ParentPlatforms? esrbRating;
   List<ShortScreenshots>? shortScreenshots;
 
-  // int? gameCount;
-  // dynamic image;
-  // int? yearStart;
-  // int? yearEnd;
-  // List<Games>? games;
 
 
   Results({
@@ -70,7 +64,7 @@ class Results {
     this.dominantColor,
     this.platforms,
     this.parentPlatforms,
-    required this.genre,
+    required this.genres,
     this.stores,
     required this.clip,
     this.tags,
@@ -83,19 +77,74 @@ class Results {
     // required this.games,
   });
 
-  Results.fromJson(Map<String, dynamic> json){
+  Results.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['name'];
     slug = json['slug'];
-
-
-
-    // gameCount = json['game_count'];
-    // backgroundImage = json['image_background'];
-    // image = json['image'];
-    // yearStart = json['year_start'];
-    // yearEnd = json['year_end'];
-    // games = json['games'];
-    
+    name = json['name'];
+    released = json['released'];
+    tba = json['tba'];
+    backgroundImage = json['background_image'];
+    rating = json['rating'];
+    ratingTop = json['rating_top'];
+    if (json['ratings'] != null) {
+      ratings = <Ratings>[];
+      json['ratings'].forEach((v) {
+        ratings!.add(Ratings.fromJson(v));
+      });
+    }
+    ratingsCount = json['ratings_count'];
+    reviewsTextCount = json['reviews_text_count'];
+    added = json['added'];
+    addedByStatus = json['added_by_status'] != null
+        ? AddedByStatus.fromJson(json['added_by_status'])
+        : null;
+    metacritic = json['metacritic'];
+    playtimes = json['playtime'];
+    suggestionsCount = json['suggestions_count'];
+    updated = json['updated'];
+    userGame = json['user_game'];
+    reviewsCount = json['reviews_count'];
+    saturatedColor = json['saturated_color'];
+    dominantColor = json['dominant_color'];
+    if (json['platforms'] != null) {
+      platforms = <Platforms>[];
+      json['platforms'].forEach((v) {
+        platforms!.add(Platforms.fromJson(v));
+      });
+    }
+    if (json['parent_platforms'] != null) {
+      parentPlatforms = <ParentPlatforms>[];
+      json['parent_platforms'].forEach((v) {
+        parentPlatforms!.add(ParentPlatforms.fromJson(v));
+      });
+    }
+    if (json['genres'] != null) {
+      genres = <Genre>[];
+      json['genres'].forEach((v) {
+        genres!.add(Genre.fromJson(v));
+      });
+    }
+    if (json['stores'] != null) {
+      stores = <Stores>[];
+      json['stores'].forEach((v) {
+        stores!.add(Stores.fromJson(v));
+      });
+    }
+    clip = json['clip'];
+    if (json['tags'] != null) {
+      tags = <Tags>[];
+      json['tags'].forEach((v) {
+        tags!.add(Tags.fromJson(v));
+      });
+    }
+    esrbRating = json['esrb_rating'] != null
+        ? ParentPlatforms.fromJson(json['esrb_rating'])
+        : null;
+    if (json['short_screenshots'] != null) {
+      shortScreenshots = <ShortScreenshots>[];
+      json['short_screenshots'].forEach((v) {
+        shortScreenshots!.add(ShortScreenshots.fromJson(v));
+      });
+    }
   }
 }
