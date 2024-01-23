@@ -5,7 +5,7 @@ class AllGames {
   int? count;
   String? next;
   dynamic previous;
-  List<Results>? results;
+  late List<Results> results;
   String? seoTitle;
   String? seoDescription;
   String? seoKeywords;
@@ -20,7 +20,7 @@ class AllGames {
     this.count,
     this.next,
     this.previous,
-    this.results,
+    required this.results,
     this.seoTitle,
     this.seoDescription,
     this.seoKeywords,
@@ -53,7 +53,7 @@ class AllGames {
     previous = json['previous'];
     results = <Results>[];
     json['results'].forEach((v) {
-      results!.add(Results.fromJson(v));
+      results.add(Results.fromJson(v));
     });
 
     seoTitle = json['seo_title'];

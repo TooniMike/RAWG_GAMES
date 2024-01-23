@@ -14,7 +14,7 @@ class Results {
   String? released;
   bool? tba;
   String? backgroundImage;
-  int? rating;
+  double? rating;
   int? ratingTop;
   List<Ratings>? ratings;
   int? ratingsCount;
