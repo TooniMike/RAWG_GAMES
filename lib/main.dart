@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:games_call/repository/utils/app_bloc_observer.dart';
+import 'package:games_call/utils/app_bloc_observer.dart';
 
 import 'repository/home/home_page.dart';
 
