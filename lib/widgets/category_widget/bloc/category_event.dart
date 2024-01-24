@@ -8,3 +8,13 @@ sealed class CategoryEvent extends Equatable {
   
 }
   class GetCategories extends CategoryEvent{}
+
+  class SelectCategory extends CategoryEvent {
+  final int idSelected;
+  const SelectCategory({
+    required this.idSelected,
+  });
+
+  @override
+  List<Object> get props => [idSelected];
+}

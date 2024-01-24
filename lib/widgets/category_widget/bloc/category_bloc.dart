@@ -12,12 +12,14 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     // on<CategoryEvent>((event, emit) {
     // });
 
-    on<GetCategories> (_mapGetCategoriesEventToState);
+    on<GetCategories>(_mapGetCategoriesEventToState);
+    on<SelectCategory>(_mapSelectCategoryEventToState);
   }
 
-    void _mapGetCategoriesEventToState(GetCategories event, Emitter<CategoryState> emit)async{
-      emit(state.copyWith(status: CategoryStatus.loading));
-     try {
+  void _mapGetCategoriesEventToState(
+      GetCategories event, Emitter<CategoryState> emit) async {
+    emit(state.copyWith(status: CategoryStatus.loading));
+    try {
       final genres = await gameRepository.getGenres();
       emit(
         state.copyWith(
@@ -30,4 +32,12 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
       emit(state.copyWith(status: CategoryStatus.error));
     }
   }
+
+void _mapSelectCategoryEventToState (SelectCategory event, Emitter<CategoryState> emit) async {
+  emit(state.copyWith(
+    status: CategoryStatus.selected,
+    idSelected: event.idSelected,
+  ));
+}
+
 }

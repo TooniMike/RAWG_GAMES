@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:games_call/widgets/all_games_widgets/all_games_widgets.dart';
 import 'package:games_call/widgets/category_widget/categories_widget.dart';
 import 'package:games_call/widgets/container_body.dart';
+import 'package:games_call/widgets/games_by_category_widget.dart/games_by_categories.dart';
 
 import '../../widgets/header.dart';
 
@@ -19,6 +20,7 @@ class HomeLayout extends StatelessWidget {
           ContainerBody(
             children: [
               CategoriesWidget(),
+              GamesByCategory(),
               AllGamesWidget(title: 'All games'),
             ],
           )
