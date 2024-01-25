@@ -15,14 +15,19 @@ class Header extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 25.0,
+                color: Colors.white
               ),
             ),
             SizedBox(height: 8.0),
-            Text(
-              'What game would you like to play?  ',
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 14.0,
+            Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: Text(
+                'What game would you like to play?',
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14.0,
+                  color: Colors.white
+                ),
               ),
             ),
           ],

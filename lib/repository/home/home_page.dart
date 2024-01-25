@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepOrangeAccent,
+      backgroundColor: Colors.purple,
       body: RepositoryProvider(
         create: (context) => GameRepository(service: GameServices()),
         child: MultiBlocProvider(
@@ -41,3 +41,10 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+              // BackdropFilter(
+              //   filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
+              //   child: Container(
+              //     decoration: const BoxDecoration(color: Colors.transparent),
+              //   ),
+              // ),
