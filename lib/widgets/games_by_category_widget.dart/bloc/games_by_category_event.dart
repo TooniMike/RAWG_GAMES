@@ -11,7 +11,7 @@ class GetGamesByCategory extends GamesByCategoryEvent{
   final int idSelected;
   final String categoryName;
 
-  const GetGamesByCategory(this.idSelected, this.categoryName);
+  const GetGamesByCategory({required this.idSelected, required this.categoryName});
 
     @override
   List<Object> get props => [idSelected, categoryName];

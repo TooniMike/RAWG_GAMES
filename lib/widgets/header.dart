@@ -31,7 +31,7 @@ class Header extends StatelessWidget {
         CircleAvatar(
           radius: 35,
           backgroundImage: NetworkImage(
-            'https://cdn2.myminifactory.com/assets/object-assets/5f435a90d22ba/images/720X720-viper-avatar.jpg',
+            'https://aiavatargpt.com/imgs/styles/women/lowres/Apex%20Legends.png',
           ),
         )
       ],

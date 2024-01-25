@@ -21,6 +21,7 @@ class GamesByCategorySuccess extends StatelessWidget {
       SizedBox(
         height: MediaQuery.of(context).size.height * .2,
         child: ListView.separated(
+          scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return GameByCategoryImage(
                   name: games[index].name ?? 'No data',
