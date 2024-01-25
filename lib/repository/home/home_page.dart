@@ -5,6 +5,7 @@ import 'package:games_call/repository/home/home_layout.dart';
 import 'package:games_call/repository/services/services.dart';
 import 'package:games_call/widgets/all_games_widgets/bloc/all_games_bloc.dart';
 import 'package:games_call/widgets/category_widget/bloc/category_bloc.dart';
+import 'package:games_call/widgets/games_by_category_widget.dart/bloc/games_by_category_bloc.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -22,6 +23,11 @@ class HomePage extends StatelessWidget {
               create: (context) => AllGamesBloc(
                 gameRepository: context.read<GameRepository>(),
               )..add(GetAllGamesEvent()),
+            ),
+            BlocProvider<GamesByCategoryBloc>(
+              create: (context) => GamesByCategoryBloc(
+                gameRepository: context.read<GameRepository>(),
+              )
             ),
             BlocProvider<CategoryBloc>(
               create: (context) => CategoryBloc(
