@@ -16,7 +16,7 @@ class CategoryItem extends StatelessWidget {
       onTap: () => callback(category),
       child: BlocSelector<CategoryBloc, CategoryState, bool>(
           selector: (state) =>
-              (state.status.isSelected && state.idSelected == category)
+              (state.status.isSelected && state.idSelected == category.id)
                   ? true
                   : false,
           builder: (context, state) {
