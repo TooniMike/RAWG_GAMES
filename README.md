@@ -1,4 +1,4 @@
-# games_call
+# RAWG GAMES
 
 A new Flutter project.
 
